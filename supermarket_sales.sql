@@ -109,7 +109,7 @@ ALTER TABLE `dim_branch`
 -- Indices de la tabla `dim_customer`
 --
 ALTER TABLE `dim_customer`
-  ADD PRIMARY KEY (`id`,`gender`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `dim_datetime`
