@@ -1160,7 +1160,11 @@ ALTER TABLE `dim_branch`
 -- Indices de la tabla `dim_customer`
 --
 ALTER TABLE `dim_customer`
+<<<<<<< HEAD
   ADD PRIMARY KEY (`ID_COSTUMER`);
+=======
+  ADD PRIMARY KEY (`id`);
+>>>>>>> 5cb5aa7aa4279c69328b7c2f8faaa9d02bb4fc2e
 
 --
 -- Indices de la tabla `dim_datetime`
