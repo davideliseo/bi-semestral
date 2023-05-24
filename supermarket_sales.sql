@@ -1142,7 +1142,7 @@ CREATE TABLE `fact_sale` (
   `total` decimal(10,2) NOT NULL,
   `cogs` decimal(6,2) NOT NULL,
   `gross_margin_percentage` decimal(12,10) NOT NULL,
-  `gross_margin` decimal(8,4) NOT NULL,
+  `gross_income` decimal(8,4) NOT NULL,
   `rating` float(4,1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
