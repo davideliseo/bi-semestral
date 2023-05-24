@@ -1142,7 +1142,7 @@ CREATE TABLE `fact_sale` (
   `total` decimal(10,2) NOT NULL,
   `cogs` decimal(6,2) NOT NULL,
   `gross_margin_percentage` decimal(12,10) NOT NULL,
-  `gross_margin` decimal(8,4) NOT NULL,
+  `gross_income` decimal(8,4) NOT NULL,
   `rating` float(4,1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -1150,7 +1150,7 @@ CREATE TABLE `fact_sale` (
 -- Volcado de datos para la tabla `fact_sale`
 --
 
-INSERT INTO `fact_sale` (`ID_SALE`, `branch_id`, `customer_id`, `product_id`, `datetime_id`, `unit_price`, `quantity`, `five_percent_tax`, `total`, `cogs`, `gross_margin_percentage`, `gross_margin`, `rating`) VALUES
+INSERT INTO `fact_sale` (`ID_SALE`, `branch_id`, `customer_id`, `product_id`, `datetime_id`, `unit_price`, `quantity`, `five_percent_tax`, `total`, `cogs`, `gross_margin_percentage`, `gross_income`, `rating`) VALUES
 (500, 1, 6, 4, 1, 74.69, 7, 261.4150, 5.49, 522.83, 4.7610000000, 261.4150, 9.1),
 (501, 8, 1, 2, 2, 15.28, 5, 3.8200, 80.22, 76.40, 4.7610000000, 3.8200, 9.6),
 (502, 1, 9, 5, 3, 46.33, 7, 162.1550, 3.41, 324.31, 4.7610000000, 162.1550, 7.4),
@@ -1763,7 +1763,7 @@ INSERT INTO `fact_sale` (`ID_SALE`, `branch_id`, `customer_id`, `product_id`, `d
 (1109, 6, 12, 3, 610, 57.89, 2, 5.7890, 121.57, 115.78, 4.7610000000, 5.7890, 8.9),
 (1110, 1, 3, 2, 611, 28.96, 1, 1.4480, 30.41, 28.96, 4.7610000000, 1.4480, 6.2),
 (1111, 8, 2, 3, 612, 98.97, 9, 445.3650, 9.35, 890.73, 4.7610000000, 445.3650, 6.7);
-INSERT INTO `fact_sale` (`ID_SALE`, `branch_id`, `customer_id`, `product_id`, `datetime_id`, `unit_price`, `quantity`, `five_percent_tax`, `total`, `cogs`, `gross_margin_percentage`, `gross_margin`, `rating`) VALUES
+INSERT INTO `fact_sale` (`ID_SALE`, `branch_id`, `customer_id`, `product_id`, `datetime_id`, `unit_price`, `quantity`, `five_percent_tax`, `total`, `cogs`, `gross_margin_percentage`, `gross_income`, `rating`) VALUES
 (1112, 6, 8, 1, 613, 93.22, 3, 13.9830, 293.64, 279.66, 4.7610000000, 13.9830, 7.2),
 (1113, 8, 10, 6, 614, 80.93, 1, 40.4650, 849.77, 80.93, 4.7610000000, 40.4650, 9.0),
 (1114, 1, 12, 3, 615, 67.45, 10, 33.7250, 708.23, 674.50, 4.7610000000, 33.7250, 4.2),
