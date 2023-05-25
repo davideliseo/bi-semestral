@@ -54,11 +54,10 @@ CREATE TABLE `dim_customer` (
 
 CREATE TABLE `dim_datetime` (
   `datetime_id` int(10) UNSIGNED NOT NULL,
-  `year` tinyint(4) UNSIGNED NOT NULL,
+  `year` smallint(4) UNSIGNED NOT NULL,
   `month` tinyint(3) UNSIGNED NOT NULL,
   `day` tinyint(3) UNSIGNED NOT NULL,
   `hour` tinyint(3) UNSIGNED NOT NULL,
-  `minute` tinyint(3) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -89,7 +88,6 @@ CREATE TABLE `fact_sale` (
   `five_percent_tax` decimal(8,4) NOT NULL,
   `total` decimal(10,2) NOT NULL,
   `cogs` decimal(6,2) NOT NULL,
-  `gross_margin_percentage` decimal(12,10) NOT NULL,
   `gross_income` decimal(8,4) NOT NULL,
   `rating` float(4,1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
