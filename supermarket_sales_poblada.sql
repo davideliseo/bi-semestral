@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-05-2023 a las 18:08:35
+-- Tiempo de generación: 25-05-2023 a las 18:54:09
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `supermarket_sales2`
+-- Base de datos: `supermarket_sales`
 --
 
 -- --------------------------------------------------------
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `dim_branch` (
-  `ID_BRANCH` int(10) UNSIGNED NOT NULL,
+  `branch_id` int(10) UNSIGNED NOT NULL,
   `branch` char(1) NOT NULL,
   `city` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -37,7 +37,7 @@ CREATE TABLE `dim_branch` (
 -- Volcado de datos para la tabla `dim_branch`
 --
 
-INSERT INTO `dim_branch` (`ID_BRANCH`, `branch`, `city`) VALUES
+INSERT INTO `dim_branch` (`branch_id`, `branch`, `city`) VALUES
 (1, 'A', 'Yagon'),
 (2, 'A', 'Naypytiaw'),
 (3, 'A', 'Mandalay'),
@@ -55,7 +55,7 @@ INSERT INTO `dim_branch` (`ID_BRANCH`, `branch`, `city`) VALUES
 --
 
 CREATE TABLE `dim_customer` (
-  `ID_COSTUMER` int(10) UNSIGNED NOT NULL,
+  `customer_id` int(10) UNSIGNED NOT NULL,
   `gender` varchar(32) NOT NULL,
   `type` varchar(32) NOT NULL,
   `payment_method` varchar(32) NOT NULL
@@ -65,7 +65,7 @@ CREATE TABLE `dim_customer` (
 -- Volcado de datos para la tabla `dim_customer`
 --
 
-INSERT INTO `dim_customer` (`ID_COSTUMER`, `gender`, `type`, `payment_method`) VALUES
+INSERT INTO `dim_customer` (`customer_id`, `gender`, `type`, `payment_method`) VALUES
 (1, 'Female', 'Normal', 'Cash'),
 (2, 'Female', 'Member', 'Cash'),
 (3, 'Female', 'Normal', 'Creditcard'),
@@ -86,7 +86,7 @@ INSERT INTO `dim_customer` (`ID_COSTUMER`, `gender`, `type`, `payment_method`) V
 --
 
 CREATE TABLE `dim_datetime` (
-  `ID_DATATIME` int(10) UNSIGNED NOT NULL,
+  `datetime_id` int(10) UNSIGNED NOT NULL,
   `year` tinyint(4) UNSIGNED NOT NULL,
   `month` tinyint(3) UNSIGNED NOT NULL,
   `day` tinyint(3) UNSIGNED NOT NULL,
@@ -99,7 +99,7 @@ CREATE TABLE `dim_datetime` (
 -- Volcado de datos para la tabla `dim_datetime`
 --
 
-INSERT INTO `dim_datetime` (`ID_DATATIME`, `year`, `month`, `day`, `hour`, `minute`, `datetime`) VALUES
+INSERT INTO `dim_datetime` (`datetime_id`, `year`, `month`, `day`, `hour`, `minute`, `datetime`) VALUES
 (1, 255, 1, 5, 13, 8, '0000-00-00 00:00:00'),
 (2, 255, 3, 8, 10, 29, '0000-00-00 00:00:00'),
 (3, 255, 3, 3, 13, 23, '0000-00-00 00:00:00'),
@@ -1108,7 +1108,7 @@ INSERT INTO `dim_datetime` (`ID_DATATIME`, `year`, `month`, `day`, `hour`, `minu
 --
 
 CREATE TABLE `dim_product` (
-  `ID_PRODUCTO` int(10) UNSIGNED NOT NULL,
+  `product_id` int(10) UNSIGNED NOT NULL,
   `line` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -1116,7 +1116,7 @@ CREATE TABLE `dim_product` (
 -- Volcado de datos para la tabla `dim_product`
 --
 
-INSERT INTO `dim_product` (`ID_PRODUCTO`, `line`) VALUES
+INSERT INTO `dim_product` (`product_id`, `line`) VALUES
 (1, 'Electronic accessories'),
 (2, 'Fashion accessories'),
 (3, 'Food and beverages'),
@@ -1131,7 +1131,7 @@ INSERT INTO `dim_product` (`ID_PRODUCTO`, `line`) VALUES
 --
 
 CREATE TABLE `fact_sale` (
-  `ID_SALE` int(10) UNSIGNED NOT NULL,
+  `sale_id` int(10) UNSIGNED NOT NULL,
   `branch_id` int(10) UNSIGNED NOT NULL,
   `customer_id` int(10) UNSIGNED NOT NULL,
   `product_id` int(10) UNSIGNED NOT NULL,
@@ -1150,7 +1150,7 @@ CREATE TABLE `fact_sale` (
 -- Volcado de datos para la tabla `fact_sale`
 --
 
-INSERT INTO `fact_sale` (`ID_SALE`, `branch_id`, `customer_id`, `product_id`, `datetime_id`, `unit_price`, `quantity`, `five_percent_tax`, `total`, `cogs`, `gross_margin_percentage`, `gross_income`, `rating`) VALUES
+INSERT INTO `fact_sale` (`sale_id`, `branch_id`, `customer_id`, `product_id`, `datetime_id`, `unit_price`, `quantity`, `five_percent_tax`, `total`, `cogs`, `gross_margin_percentage`, `gross_income`, `rating`) VALUES
 (500, 1, 6, 4, 1, 74.69, 7, 261.4150, 5.49, 522.83, 4.7610000000, 261.4150, 9.1),
 (501, 8, 1, 2, 2, 15.28, 5, 3.8200, 80.22, 76.40, 4.7610000000, 3.8200, 9.6),
 (502, 1, 9, 5, 3, 46.33, 7, 162.1550, 3.41, 324.31, 4.7610000000, 162.1550, 7.4),
@@ -1763,7 +1763,7 @@ INSERT INTO `fact_sale` (`ID_SALE`, `branch_id`, `customer_id`, `product_id`, `d
 (1109, 6, 12, 3, 610, 57.89, 2, 5.7890, 121.57, 115.78, 4.7610000000, 5.7890, 8.9),
 (1110, 1, 3, 2, 611, 28.96, 1, 1.4480, 30.41, 28.96, 4.7610000000, 1.4480, 6.2),
 (1111, 8, 2, 3, 612, 98.97, 9, 445.3650, 9.35, 890.73, 4.7610000000, 445.3650, 6.7);
-INSERT INTO `fact_sale` (`ID_SALE`, `branch_id`, `customer_id`, `product_id`, `datetime_id`, `unit_price`, `quantity`, `five_percent_tax`, `total`, `cogs`, `gross_margin_percentage`, `gross_income`, `rating`) VALUES
+INSERT INTO `fact_sale` (`sale_id`, `branch_id`, `customer_id`, `product_id`, `datetime_id`, `unit_price`, `quantity`, `five_percent_tax`, `total`, `cogs`, `gross_margin_percentage`, `gross_income`, `rating`) VALUES
 (1112, 6, 8, 1, 613, 93.22, 3, 13.9830, 293.64, 279.66, 4.7610000000, 13.9830, 7.2),
 (1113, 8, 10, 6, 614, 80.93, 1, 40.4650, 849.77, 80.93, 4.7610000000, 40.4650, 9.0),
 (1114, 1, 12, 3, 615, 67.45, 10, 33.7250, 708.23, 674.50, 4.7610000000, 33.7250, 4.2),
@@ -2161,31 +2161,31 @@ INSERT INTO `fact_sale` (`ID_SALE`, `branch_id`, `customer_id`, `product_id`, `d
 -- Indices de la tabla `dim_branch`
 --
 ALTER TABLE `dim_branch`
-  ADD PRIMARY KEY (`ID_BRANCH`);
+  ADD PRIMARY KEY (`branch_id`);
 
 --
 -- Indices de la tabla `dim_customer`
 --
 ALTER TABLE `dim_customer`
-  ADD PRIMARY KEY (`ID_COSTUMER`);
+  ADD PRIMARY KEY (`customer_id`);
 
 --
 -- Indices de la tabla `dim_datetime`
 --
 ALTER TABLE `dim_datetime`
-  ADD PRIMARY KEY (`ID_DATATIME`);
+  ADD PRIMARY KEY (`datetime_id`);
 
 --
 -- Indices de la tabla `dim_product`
 --
 ALTER TABLE `dim_product`
-  ADD PRIMARY KEY (`ID_PRODUCTO`);
+  ADD PRIMARY KEY (`product_id`);
 
 --
 -- Indices de la tabla `fact_sale`
 --
 ALTER TABLE `fact_sale`
-  ADD PRIMARY KEY (`ID_SALE`),
+  ADD PRIMARY KEY (`sale_id`),
   ADD KEY `fk_sale_branch` (`branch_id`),
   ADD KEY `fk_sale_customer` (`customer_id`),
   ADD KEY `fk_sale_product` (`product_id`),
@@ -2199,31 +2199,31 @@ ALTER TABLE `fact_sale`
 -- AUTO_INCREMENT de la tabla `dim_branch`
 --
 ALTER TABLE `dim_branch`
-  MODIFY `ID_BRANCH` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `branch_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `dim_customer`
 --
 ALTER TABLE `dim_customer`
-  MODIFY `ID_COSTUMER` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `customer_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `dim_datetime`
 --
 ALTER TABLE `dim_datetime`
-  MODIFY `ID_DATATIME` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
+  MODIFY `datetime_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
 
 --
 -- AUTO_INCREMENT de la tabla `dim_product`
 --
 ALTER TABLE `dim_product`
-  MODIFY `ID_PRODUCTO` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `product_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `fact_sale`
 --
 ALTER TABLE `fact_sale`
-  MODIFY `ID_SALE` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1500;
+  MODIFY `sale_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1500;
 
 --
 -- Restricciones para tablas volcadas
@@ -2233,10 +2233,10 @@ ALTER TABLE `fact_sale`
 -- Filtros para la tabla `fact_sale`
 --
 ALTER TABLE `fact_sale`
-  ADD CONSTRAINT `fk_sale_branch` FOREIGN KEY (`branch_id`) REFERENCES `dim_branch` (`ID_BRANCH`),
-  ADD CONSTRAINT `fk_sale_customer` FOREIGN KEY (`customer_id`) REFERENCES `dim_customer` (`ID_COSTUMER`),
-  ADD CONSTRAINT `fk_sale_datetime` FOREIGN KEY (`datetime_id`) REFERENCES `dim_datetime` (`ID_DATATIME`),
-  ADD CONSTRAINT `fk_sale_product` FOREIGN KEY (`product_id`) REFERENCES `dim_product` (`ID_PRODUCTO`);
+  ADD CONSTRAINT `fk_sale_branch` FOREIGN KEY (`branch_id`) REFERENCES `dim_branch` (`branch_id`),
+  ADD CONSTRAINT `fk_sale_customer` FOREIGN KEY (`customer_id`) REFERENCES `dim_customer` (`customer_id`),
+  ADD CONSTRAINT `fk_sale_datetime` FOREIGN KEY (`datetime_id`) REFERENCES `dim_datetime` (`datetime_id`),
+  ADD CONSTRAINT `fk_sale_product` FOREIGN KEY (`product_id`) REFERENCES `dim_product` (`product_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
