@@ -57,7 +57,7 @@ CREATE TABLE `dim_datetime` (
   `year` smallint(4) UNSIGNED NOT NULL,
   `month` tinyint(3) UNSIGNED NOT NULL,
   `day` tinyint(3) UNSIGNED NOT NULL,
-  `hour` tinyint(3) UNSIGNED NOT NULL,
+  `hour` tinyint(3) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
